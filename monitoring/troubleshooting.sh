@@ -6,21 +6,20 @@ echo "=== Vikunja Kubernetes Troubleshooting ==="
 echo "0. Checking metrics-server..."
 kubectl get pods -n kube-system | grep metrics-server || echo "metrics-server not found - enable with: minikube addons enable metrics-server"
 
-# Check pod status using correct labels
+# Check pod status
 echo "1. Checking pod status..."
 kubectl get pods -l app=vikunja
 kubectl get pods -l app=postgres
 
-# Check services using correct labels
+# Check services
 echo "2. Checking services..."
-kubectl get svc -l app=vikunja
-kubectl get svc -l app=postgres
+kubectl get svc
 
 # Check ingress
 echo "3. Checking ingress..."
 kubectl get ingress
 
-# Check logs using correct labels
+# Check logs
 echo "4. Recent logs from main app..."
 kubectl logs -l app=vikunja --tail=20
 
