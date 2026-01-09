@@ -87,6 +87,19 @@ kubectl wait --for=condition=ready pod -l app=postgres --timeout=300s
 kubectl get pods,svc,ingress
 ```
 
+### 4. Access Vikunja Application
+```bash
+# Get the application URL
+minikube service vikunja --url
+
+# Alternative: Port forward to access via localhost
+kubectl port-forward svc/vikunja 8080:80
+
+# Open in browser: http://localhost:8080
+```
+
+**Expected Result**: You should see the Vikunja ToDo application interface where you can create projects, add tasks, and manage your todo lists.
+
 ## Optional: Add Monitoring (Prometheus + Grafana)
 
 ### 1. Add Helm Repository
@@ -117,9 +130,21 @@ kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 909
 ```
 
 ## Access Applications
-- **Vikunja**: `minikube service vikunja --url`
-- **Grafana**: `http://localhost:3000`
+- **Vikunja**: `minikube service vikunja --url` or `http://localhost:8080` (if using port-forward)
+- **Grafana**: `http://localhost:3000` (admin/prom-operator)
 - **Prometheus**: `http://localhost:9090`
+
+## Screenshots
+For visual confirmation of successful deployment:
+
+![Vikunja Application](screenshots/vikunja-app.png)
+*Vikunja ToDo application interface showing project and task management*
+
+![Prometheus Dashboard](screenshots/prometheus.png)
+*Prometheus metrics dashboard monitoring application performance*
+
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
+*Grafana monitoring dashboard with Kubernetes cluster metrics*
 
 ## Verification Commands
 ```bash
