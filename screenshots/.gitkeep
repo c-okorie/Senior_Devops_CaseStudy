@@ -1,8 +1,0 @@
-# Screenshots Directory
-
-This directory contains screenshots demonstrating the successful deployment of the Vikunja application.
-
-## Expected Screenshots:
-- ![alt text](vikunja-app.png) - Vikunja ToDo application interface
-- ![alt text](prometheus.png) - Prometheus metrics dashboard 
-- ![alt text](grafana-dashboard.png) - Grafana monitoring dashboard
