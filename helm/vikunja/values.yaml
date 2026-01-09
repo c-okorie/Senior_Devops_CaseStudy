@@ -1,0 +1,35 @@
+replicaCount: 2
+
+image:
+  repository: vikunja/vikunja
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3456
+
+ingress:
+  enabled: true
+  host: vikunja.local
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+database:
+  image: postgres:15
+  name: vikunja
+  user: vikunja
+  password: vikunja
+  storage: 5Gi
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 70

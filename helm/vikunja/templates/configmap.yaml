@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vikunja-config
+data:
+  VIKUNJA_DATABASE_HOST: postgres
+  VIKUNJA_DATABASE_TYPE: postgres
+  VIKUNJA_DATABASE_DATABASE: vikunja
+  VIKUNJA_SERVICE_FRONTENDURL: http://vikunja.local
+  VIKUNJA_SERVICE_PUBLICURL: http://vikunja.local
